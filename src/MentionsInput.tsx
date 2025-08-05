@@ -53,7 +53,7 @@ const MentionsInput = forwardRef<MentionsInputRef, MentionsInputProps>(
 
     // Generate display text by replacing mentions with @name format
     const generateDisplayText = useCallback((text: string): string => {
-      return text.replace(/@\[([^\]]+)\]\([^)]+\)/g, "@$1");
+      return text?.replace(/@\[([^\]]+)\]\([^)]+\)/g, "@$1");
     }, []);
 
     // Convert display position to storage position
