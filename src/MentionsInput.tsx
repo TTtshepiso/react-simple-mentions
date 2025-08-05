@@ -5,6 +5,7 @@ import React, {
   useState,
   useCallback,
 } from "react";
+import { parseMentions } from "./utils/parseMentions";
 
 type Mention = {
   name: string;
@@ -52,24 +53,6 @@ const MentionsInput = forwardRef<MentionsInputRef, MentionsInputProps>(
     const [currentMention, setCurrentMention] = useState<CurrentMention | null>(
       null
     );
-
-    // Parse mentions from the stored format @[name](id)
-    const parseMentions = useCallback((text: string): ParsedMention[] => {
-      const mentionRegex = /@\[([^\]]+)\]\(([^)]+)\)/g;
-      const mentions: ParsedMention[] = [];
-      let match;
-
-      while ((match = mentionRegex.exec(text)) !== null) {
-        mentions.push({
-          name: match[1],
-          id: match[2],
-          start: match.index,
-          end: match.index + match[0].length,
-        });
-      }
-
-      return mentions;
-    }, []);
 
     // Generate display text by replacing mentions with @name format
     const generateDisplayText = useCallback((text: string): string => {
@@ -277,4 +260,4 @@ const MentionsInput = forwardRef<MentionsInputRef, MentionsInputProps>(
 MentionsInput.displayName = "MentionsInput";
 
 export default MentionsInput;
-export type { Mention, MentionTriggerData, MentionsInputRef };
+export type { Mention, ParsedMention, MentionTriggerData, MentionsInputRef };
