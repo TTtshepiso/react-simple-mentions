@@ -23,16 +23,13 @@ type MentionTriggerData = {
   mentionStart: number;
 };
 
-type MentionsInputProps = {
+type MentionsInputProps = Omit<
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  "ref" | "value" | "onChange"
+> & {
   value: string;
   onChange: (value: string) => void;
   onMentionTrigger?: (data: MentionTriggerData) => void;
-  className?: string;
-  style?: React.CSSProperties;
-  placeholder?: string;
-  rows?: number;
-  disabled?: boolean;
-  readOnly?: boolean;
 };
 
 interface MentionsInputRef {
