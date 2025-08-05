@@ -30,6 +30,7 @@ type MentionsInputProps = Omit<
   value: string;
   onChange: (value: string) => void;
   onMentionTrigger?: (data: MentionTriggerData) => void;
+  onMentionCancel?: () => void;
 };
 
 interface MentionsInputRef {
@@ -45,7 +46,10 @@ interface CurrentMention {
 }
 
 const MentionsInput = forwardRef<MentionsInputRef, MentionsInputProps>(
-  ({ value, onChange, onMentionTrigger, ...textareaProps }, ref) => {
+  (
+    { value, onChange, onMentionTrigger, onMentionCancel, ...textareaProps },
+    ref
+  ) => {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const [currentMention, setCurrentMention] = useState<CurrentMention | null>(
       null
@@ -153,8 +157,12 @@ const MentionsInput = forwardRef<MentionsInputRef, MentionsInputProps>(
           }
         }
 
+        // Determine what the new currentMention should be
+        let newCurrentMention: CurrentMention | null = null;
+
         // Check for new @ mentions
         const atIndex = newDisplayText.lastIndexOf("@", cursorPos - 1);
+
         if (
           atIndex !== -1 &&
           (atIndex === 0 || /\s/.test(newDisplayText[atIndex - 1]))
@@ -165,30 +173,36 @@ const MentionsInput = forwardRef<MentionsInputRef, MentionsInputProps>(
               atIndex,
               newStorageText
             );
-            setCurrentMention({
+
+            newCurrentMention = {
               start: storageAtIndex,
               end: storageAtIndex + query.length + 1,
               query,
-            });
+            };
 
             onMentionTrigger?.({
               query,
               position: cursorPos,
               mentionStart: atIndex,
             });
-          } else {
-            setCurrentMention(null);
           }
-        } else {
-          setCurrentMention(null);
         }
 
+        // Detect transition: had mention => no mention
+        if (currentMention !== null && newCurrentMention === null) {
+          onMentionCancel?.();
+        }
+
+        // Update state
+        setCurrentMention(newCurrentMention);
         onChange(newStorageText);
       },
       [
         value,
         onChange,
         onMentionTrigger,
+        onMentionCancel,
+        currentMention,
         parseMentions,
         displayToStoragePosition,
         storageToDisplayPosition,

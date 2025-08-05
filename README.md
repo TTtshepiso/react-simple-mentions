@@ -85,17 +85,14 @@ export default App;
 
 ### **MentionsInput Props**
 
-| Prop               | Type                                 | Description                                          |
-| ------------------ | ------------------------------------ | ---------------------------------------------------- |
-| `value`            | `string`                             | The current value of the input.                      |
-| `onChange`         | `(value: string) => void`            | Callback triggered when the input value changes.     |
-| `onMentionTrigger` | `(data: MentionTriggerData) => void` | Callback triggered when a mention query is detected. |
-| `className`        | `string`                             | Optional CSS class for the input.                    |
-| `style`            | `React.CSSProperties`                | Inline styles for the input.                         |
-| `placeholder`      | `string`                             | Placeholder text for the input.                      |
-| `rows`             | `number`                             | Number of rows for the textarea.                     |
-| `disabled`         | `boolean`                            | Disables the input if set to `true`.                 |
-| `readOnly`         | `boolean`                            | Makes the input read-only if set to `true`.          |
+| Prop               | Type                                 | Description                                             |
+| ------------------ | ------------------------------------ | ------------------------------------------------------- |
+| `value`            | `string`                             | The current value of the input.                         |
+| `onChange`         | `(value: string) => void`            | Callback triggered when the input value changes.        |
+| `onMentionTrigger` | `(data: MentionTriggerData) => void` | Callback triggered when a mention query is detected.    |
+| `onMentionCancel`  | `() => void`                         | Callback triggered when the current mention is deleted. |
+
+- All standard HTML `textarea` props.
 
 ---
 
