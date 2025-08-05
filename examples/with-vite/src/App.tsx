@@ -14,6 +14,13 @@ const App: React.FC = () => {
 
   return (
     <div style={{ padding: "20px", position: "relative" }}>
+      <h1>react-simple-mentions</h1>
+
+      <p>
+        Dead-simple, customizable mentions input built with React and
+        Typescript.
+      </p>
+
       <MentionsInput
         ref={mentionsInputRef}
         value={value}
