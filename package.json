@@ -1,0 +1,27 @@
+{
+  "name": "react-simple-mentions",
+  "version": "1.0.0",
+  "description": "Simple mentions input using textarea. Lightweight, customizable and built with Typescript.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leojuriolli7/react-simple-mentions.git"
+  },
+  "keywords": [
+    "mentions",
+    "react",
+    "typescript"
+  ],
+  "author": "leojuriolli7",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^19.1.9",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "react": "^19.1.1"
+  }
+}
