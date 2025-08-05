@@ -37,6 +37,7 @@ interface MentionsInputRef {
   insertMention: (mention: Mention) => void;
   cancelMention: () => void;
   focus: () => void;
+  element: HTMLTextAreaElement | null;
 }
 
 interface CurrentMention {
@@ -212,6 +213,7 @@ const MentionsInput = forwardRef<MentionsInputRef, MentionsInputProps>(
     useImperativeHandle(
       ref,
       () => ({
+        element: textareaRef.current,
         insertMention: (mention: Mention) => {
           if (!currentMention || !textareaRef.current) return;
 

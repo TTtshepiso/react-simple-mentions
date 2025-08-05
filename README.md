@@ -107,6 +107,7 @@ The `MentionsInput` component exposes the following methods via its ref:
 | `insertMention` | Inserts a mention programmatically. Takes a `Mention` object as an argument. |
 | `cancelMention` | Cancels the current mention query.                                           |
 | `focus`         | Focuses the input programmatically.                                          |
+| `element`       | The underlying textarea element ref.                                         |
 
 ### **MentionTriggerData**
 
