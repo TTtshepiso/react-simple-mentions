@@ -1,5 +1,7 @@
 # **react-simple-mentions**
 
+View an example: https://react-simple-mentions-vite.vercel.app/
+
 https://github.com/user-attachments/assets/1c4fcf2f-01c9-4276-ad45-02f977204c17
 
 A lightweight and customizable React component for handling mentions in text inputs. Perfect for building chat applications, comment sections, or any feature requiring user mentions.
