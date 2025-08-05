@@ -3,7 +3,7 @@ import {
   MentionsInput,
   type MentionsInputRef,
   type MentionTriggerData,
-} from "../../../src";
+} from "react-simple-mentions";
 import MentionsPicker from "./MentionsPicker";
 
 const App: React.FC = () => {

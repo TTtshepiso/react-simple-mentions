@@ -10,7 +10,7 @@
   "dependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.1",
-    "react-simple-mentions": "^1.2.0"
+    "react-simple-mentions": "^1.6.0"
   },
   "devDependencies": {
     "@types/react": "^19.1.8",
