@@ -3,7 +3,7 @@ import {
   MentionsInput,
   type MentionsInputRef,
   type MentionTriggerData,
-} from "react-simple-mentions";
+} from "../../../src";
 import MentionsPicker from "./MentionsPicker";
 
 const App: React.FC = () => {
@@ -26,6 +26,7 @@ const App: React.FC = () => {
         value={value}
         onChange={setValue}
         onMentionTrigger={setMentionTrigger}
+        onMentionCancel={() => setMentionTrigger(null)}
         placeholder="Type @ to mention someone..."
         rows={4}
         style={{ width: "100%", padding: "8px", fontSize: "14px" }}
