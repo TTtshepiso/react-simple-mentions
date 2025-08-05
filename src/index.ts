@@ -1,1 +1,6 @@
-export { default as MentionsInput } from "./MentionsInput";
+export {
+  default as MentionsInput,
+  type MentionsInputRef,
+  type Mention,
+  type MentionTriggerData,
+} from "./MentionsInput";
